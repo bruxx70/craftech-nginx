@@ -28,15 +28,3 @@ jobs:
       - name: Subir imagen a Docker Hub
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/nginx-cicd:latest
-
-      - name: Detener y eliminar contenedor
-        run: |
-          docker stop nginx-cicd || true
-          docker rm nginx-cicd || true
-      - name: Descargar nueva imagen
-        run: |
-          docker pull ${{ secrets.DOCKER_USERNAME }}/nginx-cicd:latest
-
-      - name: Ejecutar nuevo contenedor
-        run: |
-          docker run -d --name ci-cd -p 8080:80 ${{ secrets.DOCKER_USERNAME }}/nginx-cicd:latest
