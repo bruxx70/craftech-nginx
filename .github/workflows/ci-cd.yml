@@ -31,8 +31,8 @@ jobs:
 
       - name: Detener y eliminar contenedor
         run: |
-          docker stop ci-cd-nginx:latest || true
-          docker rm ci-cd-nginx:latest || true
+          docker stop ci-cd-nginx-1 || true
+          docker rm ci-cd-nginx-1 || true
       - name: Descargar nueva imagen
         run: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/nginx-cicd:latest
